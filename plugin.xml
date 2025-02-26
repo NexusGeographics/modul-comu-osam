@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-plugin-comu-osam" version="1.0.4"
+<plugin id="cordova-plugin-comu-osam" version="1.0.3"
   xmlns="http://apache.org/cordova/ns/plugins/1.0"
   xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest"
   xmlns:android="http://schemas.android.com/apk/res/android">
@@ -29,7 +29,7 @@
     </config-file>
 
     <framework src="src/android/app.gradle" custom="true" type="gradleReference"/>
-    <lib-file  src="src/android/libs/common-android-debug-2.2.2.aar"/>
+    <lib-file  src="src/android/libs/common-android-debug-2.1.8.aar"/>
 
     <source-file src="src/android/AnalyticsAndroid.java" target-dir="src/com/comuosam/cordova/plugin"/>
     <source-file src="src/android/CrashlyticsAndroid.java" target-dir="src/com/comuosam/cordova/plugin"/>
