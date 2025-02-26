@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-comu-osam" version="1.0.4"
+  xmlns="http://apache.org/cordova/ns/plugins/1.0"
+  xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <name>ComuOsamPlugin</name>
+  <description>Modul comu osam BCN </description>
+  <license>MIT-0</license>
+  <keywords>cordova, android, ios</keywords>
+
+  <engines>
+      <engine name="cordova" version=">=9.0.0" />
+  </engines>
+
+
+  <!-- www -->
+  <js-module name="ComuOsamPlugin" src="www/ComuOsamPlugin.js">
+    <clobbers target="cordova.plugins.ComuOsamPlugin"/>
+  </js-module>
+  
+  <!-- android -->
+  <platform name="android">
+    <config-file parent="/*" target="res/xml/config.xml">
+      <feature name="ComuOsamPlugin">
+        <param name="android-package" value="com.comuosam.cordova.plugin.ComuOsamPlugin"/>
+        <param name="onload" value="true" />
+      </feature>
+    </config-file>
+
+    <framework src="src/android/app.gradle" custom="true" type="gradleReference"/>
+    <lib-file  src="src/android/libs/common-android-debug-2.2.2.aar"/>
+
+    <source-file src="src/android/AnalyticsAndroid.java" target-dir="src/com/comuosam/cordova/plugin"/>
+    <source-file src="src/android/CrashlyticsAndroid.java" target-dir="src/com/comuosam/cordova/plugin"/>
+    <source-file src="src/android/PerformanceAndroid.java" target-dir="src/com/comuosam/cordova/plugin"/>
+    <source-file src="src/android/ComuOsamPlugin.java" target-dir="src/com/comuosam/cordova/plugin"/>
+    <source-file src="src/android/VersionControlCallback.java" target-dir="src/com/comuosam/cordova/plugin"/>
+
+    
+  </platform>
+  
+  <!-- iOS -->
+  <platform name="ios">
+      <config-file parent="/*" target="config.xml">
+          <feature name="ComuOsamPlugin">
+              <param name="ios-package" value="ComuOsamPlugin" />
+              <param name="onload" value="true" />
+          </feature>
+      </config-file>
+      <dependency id="cordova-plugin-add-swift-support" version="2.0.2" />
+      <framework src="src/ios/OSAMCommon.xcframework" custom="true" embed="true" />
+
+      <source-file src="src/ios/ComuOsamPlugin.swift" target-dir="src/com/comuosam/cordova/plugin"/>
+      <source-file src="src/ios/analytics/AnalyticsWrapperIOS.swift" target-dir="src/com/comuosam/cordova/plugin"/>
+      <source-file src="src/ios/crashlytics/CrashlyticsWrapperIOS.swift" target-dir="src/com/comuosam/cordova/plugin"/>
+      <source-file src="src/ios/performance/PerformanceWrapperIOS.swift" target-dir="src/com/comuosam/cordova/plugin"/>
+      <source-file src="src/ios/platform/PlatformUtilIOS.swift" target-dir="src/com/comuosam/cordova/plugin"/>
+  </platform>
+
+</plugin>

@@ -1,0 +1,29 @@
+{
+    "name": "cordova-plugin-comu-osam",
+    "version": "1.0.0",
+    "description": "Cordova plugin example",
+    "author": "<Your name>",
+    "license": "MIT-0",
+    "homepage": "https://github.com/AjuntamentdeBarcelona/modul_comu_osam",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/AjuntamentdeBarcelona/modul_comu_osam"
+    },
+    "engines": {
+      "cordova": ">=9.0.0"
+    },  
+    "cordova": {
+      "id": "cordova-plugin-comu-osam",
+      "platforms": [
+        "android",
+        "ios"
+      ]
+    },
+    "keywords": [
+      "ecosystem:cordova",
+      "cordova-android",
+      "cordova-ios",
+      "cordova",
+      "android"
+    ]
+  }
