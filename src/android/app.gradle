@@ -19,8 +19,8 @@ allprojects {
 }
 
 dependencies {
-  implementation 'androidx.appcompat:appcompat:1.4.1'
-  implementation (files("libs/common-android-debug-2.1.8.aar"))
+
+  implementation (files("libs/common-android-debug-2.2.2.aar"))
 
   implementation (files("implementations/AnalyticsAndroid.java"))
   implementation (files("implementations/CrashlyticsAndroid.java"))
@@ -30,27 +30,37 @@ dependencies {
 
   implementation (group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: '1.4.10')
 
-  implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
-  implementation 'androidx.appcompat:appcompat:1.4.1'
-  implementation 'androidx.recyclerview:recyclerview:1.2.0'
+  implementation 'androidx.appcompat:appcompat:1.7.0'
+  implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
+  //implementation "io.ktor:ktor-client-darwin:3.0.0"
+  implementation "io.ktor:ktor-client-okhttp:3.0.0"
+  implementation 'androidx.recyclerview:recyclerview:1.3.2'
   implementation 'androidx.multidex:multidex:2.0.1'
-  implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0-native-mt'
-  implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.0-native-mt'
-  implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-native-mt'
-  implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2'
-  implementation 'org.jetbrains.kotlin:kotlin-serialization:1.6.10'
+
+  implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0'
+  implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0'
+  implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.9.0'
+
+  implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3'
+
+  implementation "io.ktor:ktor-client-core:3.0.0"
+  implementation "io.ktor:ktor-client-json:3.0.0"
+  implementation "io.ktor:ktor-client-content-negotiation:3.0.0"
+  implementation "io.ktor:ktor-serialization-kotlinx-json:3.0.0"
+  implementation "io.ktor:ktor-client-auth:3.0.0"
+  implementation "io.ktor:ktor-client-logging:3.0.0"
+
+
+  implementation 'com.google.android.play:review:2.0.2'
+  implementation 'com.google.android.play:review-ktx:2.0.2'
+
+  
+  //implementation 'org.jetbrains.kotlin:kotlin-serialization:1.6.10'
   //implementation 'com.google.android.play:core:1.10.3'
   //implementation 'com.google.android.play:core-ktx:1.8.1'
   //Play core 1.8.0 contains In-App Review library -> No need to add this library
-  implementation 'com.google.android.play:review:2.0.1'
-  implementation 'com.google.android.play:review-ktx:2.0.1'
-  implementation "io.ktor:ktor-client-core:1.6.7" 
-  implementation "io.ktor:ktor-client-cio:1.6.7"
-  implementation "io.ktor:ktor-client-android:1.6.7" 
-  implementation "io.ktor:ktor-client-logging:1.6.7"
-  implementation "io.ktor:ktor-client-features:1.6.7"
-  implementation "io.ktor:ktor-client-json:1.6.7"
-  implementation "io.ktor:ktor-client-serialization:1.6.7"
-  implementation "io.ktor:ktor-client-okhttp:1.6.7"
-  implementation "io.ktor:ktor-client-auth:1.6.7"
+
+  
+
+
 }

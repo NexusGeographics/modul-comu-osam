@@ -64,15 +64,17 @@ public class ComuOsamPlugin extends CordovaPlugin {
         );
     }
 
-    private Unit onVersionControlResponseRecieved(VersionControlResponse response) {
+    private Unit onVersionControlResponseRecieved(VersionControlResponse response, CallbackContext callbackContext) {
         Log.d("osam", "onVersionControlResponseRecieved " + response.toString());
-        //No realitzem cap acció
+        PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, response.toString());
+        callbackContext.sendPluginResult(pluginResult);
         return Unit.INSTANCE;
     }
 
-    private Unit onRatingControlResponseRecieved(RatingControlResponse response) {
+    private Unit onRatingControlResponseRecieved(RatingControlResponse response, CallbackContext callbackContext) {
         Log.d("osam", "onRatingControlResponseRecieved " + response.toString());
-        //No realitzem cap acció
+        PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, response.toString());
+        callbackContext.sendPluginResult(pluginResult);
         return Unit.INSTANCE;
     }
 
@@ -104,10 +106,14 @@ public class ComuOsamPlugin extends CordovaPlugin {
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) {
         if(action.equals("versionControl")) {
             // funció per mostrar un diàleg per actualitzar l'app si és necessari
-            osamCommons.versionControl(this.getLanguage(args), this::onVersionControlResponseRecieved);                               
+            osamCommons.versionControl(this.getLanguage(args), response -> {
+                return onVersionControlResponseRecieved(response, callbackContext);
+                });
         }else if (action.equals("rating")) {
             // funció per mostrar un diàleg per valorar l'app
-            osamCommons.rating(this.getLanguage(args), this::onRatingControlResponseRecieved);
+            osamCommons.rating(this.getLanguage(args), response -> {
+                return onRatingControlResponseRecieved(response, callbackContext);
+                });
            
         } else if (action.equals("deviceInformation")) {
              
@@ -117,9 +123,7 @@ public class ComuOsamPlugin extends CordovaPlugin {
             callbackContext.error("\"" + action + "\" is not a recognized action.");
             return false;            
         }
-        
-        PluginResult pluginResult = new PluginResult(PluginResult.Status.OK);
-        callbackContext.sendPluginResult(pluginResult);
+
         return true;
     }
 }
