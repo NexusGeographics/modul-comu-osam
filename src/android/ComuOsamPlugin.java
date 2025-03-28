@@ -56,7 +56,7 @@ public class ComuOsamPlugin extends CordovaPlugin {
         osamCommons = new OSAMCommons(
             cordova.getActivity(),
             context,
-            "https://dev-osam-modul-comu.dtibcn.cat/",
+            "https://osam-modul-comu.dtibcn.cat/",
             crashlyticsAndroid,
             performanceAndroid,
             analyticsAndroid,

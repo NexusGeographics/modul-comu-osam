@@ -4,7 +4,7 @@ import OSAMCommon
 class ComuOsamPlugin : CDVPlugin {
   lazy var osamCommons = OSAMCommons(
     vc: self.viewController,
-    backendEndpoint: "https://dev-osam-modul-comu.dtibcn.cat/",
+    backendEndpoint: "https://osam-modul-comu.dtibcn.cat/",
     crashlyticsWrapper: CrashlyticsWrapperIOS(),
     performanceWrapper: PerformanceWrapperIOS(),
     analyticsWrapper: AnalyticsWrapperIOS(),
