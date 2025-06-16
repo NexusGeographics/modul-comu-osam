@@ -8,6 +8,10 @@ class ComuOsamPlugin {
         cordova.exec(successCallback, errorCallback, "ComuOsamPlugin", "rating", [options]);
 	}
 
+	initialize(options, successCallback, errorCallback) {
+		cordova.exec(successCallback, errorCallback, "ComuOsamPlugin", "initialize", [options]);
+	}	
+
 	/**
 	 * Constructor d'instal·lació que assigna el plugin al window.
 	 */

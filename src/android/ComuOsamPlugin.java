@@ -35,28 +35,32 @@ import android.widget.Toast;
 
 public class ComuOsamPlugin extends CordovaPlugin {
     OSAMCommons osamCommons;
+    private boolean isDev = false;
      
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
+        Log.d("osam", "Waiting for OSAMCommons to be initialized");
+    }
 
-        //Context context = cordova.getActivity().getApplicationContext();
+    private void initializeOsamCommons(boolean isDev) {
         Context context = cordova.getActivity();
-        if (context != null) {
-            Log.d("osam", "Context obtained successfully.");
-        } else {
-            Log.e("osam", "Failed to obtain context.");
-        }
 
         CrashlyticsAndroid crashlyticsAndroid = new CrashlyticsAndroid();
         PerformanceAndroid performanceAndroid = new PerformanceAndroid();
         AnalyticsAndroid analyticsAndroid = new AnalyticsAndroid(context);
         PlatformUtilAndroid platformUtilAndroid = new PlatformUtilAndroid(context);
-        
+
+        String baseUrl = isDev
+            ? "https://dev-osam-modul-comu.dtibcn.cat/"
+            : "https://osam-modul-comu.dtibcn.cat/";
+
+        Log.d("osam", "Usando URL: " + baseUrl);
+
         osamCommons = new OSAMCommons(
             cordova.getActivity(),
             context,
-            "https://osam-modul-comu.dtibcn.cat/",
+            baseUrl,
             crashlyticsAndroid,
             performanceAndroid,
             analyticsAndroid,
@@ -109,7 +113,7 @@ public class ComuOsamPlugin extends CordovaPlugin {
             osamCommons.versionControl(this.getLanguage(args), response -> {
                 return onVersionControlResponseRecieved(response, callbackContext);
                 });
-        }else if (action.equals("rating")) {
+        } else if (action.equals("rating")) {
             // funció per mostrar un diàleg per valorar l'app
             osamCommons.rating(this.getLanguage(args), response -> {
                 return onRatingControlResponseRecieved(response, callbackContext);
@@ -119,6 +123,14 @@ public class ComuOsamPlugin extends CordovaPlugin {
              
         } else if(action.equals("appInformation")) {
               
+        } 
+        else if (action.equals("initialize")) {
+            try {
+                boolean isDev = args.getBoolean(0);
+                initializeOsamCommons(isDev);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }            
         } else {
             callbackContext.error("\"" + action + "\" is not a recognized action.");
             return false;            
