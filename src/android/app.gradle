@@ -20,7 +20,7 @@ allprojects {
 
 dependencies {
 
-  implementation (files("libs/common-android-debug-2.2.2.aar"))
+  implementation (files("libs/common-android-debug-2.2.3.aar"))
 
   implementation (files("implementations/AnalyticsAndroid.java"))
   implementation (files("implementations/CrashlyticsAndroid.java"))
